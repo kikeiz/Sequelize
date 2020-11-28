@@ -3,11 +3,11 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return Promise.all([
       queryInterface.createTable('Users', {
-        id: {
+        userId: {
+          type: Sequelize.INTEGER,
           allowNull: false,
           autoIncrement: true,
-          primaryKey: true,
-          type: Sequelize.INTEGER
+          primaryKey: true
         },
         name: {
           type: Sequelize.STRING
@@ -26,16 +26,16 @@ module.exports = {
           type: Sequelize.DATE
         },
         updatedAt: {
-          allowNull: false,
-          type: Sequelize.DATE
+          type: Sequelize.DATE,
+          allowNull: false
         }
       }),
       queryInterface.createTable('Questionnaires', {
-        id: {
+        queryId: {
+          type: Sequelize.INTEGER,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
-          type: Sequelize.INTEGER
         },
         name: {
           type: Sequelize.STRING
@@ -48,10 +48,9 @@ module.exports = {
         },
         user_id: {
           type: Sequelize.INTEGER,
-          onUpdate: 'CASCADE',
           references:{
             model: 'Users',
-            key: 'id'
+            key: 'userId'
           }
         },
         createdAt: {
