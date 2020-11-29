@@ -26,8 +26,18 @@ const deleteQuestionnaire = require('./routes/deleteQuestionnaire')
 //UpdateQuestionnaire
 const UpdateQuestionnaire = require('./routes/updateQuestionnaire')
 
-//requireToken
-const getToken = require('./routes/tokenRoute')
+//Home
+const Home = require ('./routes/home')
+
+//Redirect OauthURL
+const redirect = require('./routes/oauth-redirect');
+
+//oauth-callback
+
+const oauthCallback = require('./routes/oauth-token')
+
+
+
 
 
 //middlewaresV1
@@ -36,7 +46,10 @@ app.use('/v1/prueba', createQuestionnaire)
 app.use('/v1/prueba', findUserFromQuestionnaire)
 app.use('/v1/prueba', deleteQuestionnaire)
 app.use('/v1/prueba', UpdateQuestionnaire)
-app.use('/v1/prueba', getToken)
+app.use('/v1/prueba', Home)
+app.use('/v1/prueba', redirect)
+app.use('/v1/prueba', oauthCallback)
+
    
 
 

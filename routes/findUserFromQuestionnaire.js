@@ -4,7 +4,6 @@ const db = require('../config/db');
 const DataTypes = require ('sequelize');
 const Users = require('../models/users')(db.sequelize, DataTypes);
 const Questionnaires = require('../models/questionnaires')(db.sequelize, DataTypes);
-import {db} from '../models/index'
 
 
 app.get('/usuario/cuestionario', (req,rep)=>{
