@@ -34,7 +34,15 @@ const redirect = require('./routes/oauth-redirect');
 
 //oauth-callback
 
-const oauthCallback = require('./routes/oauth-token')
+const oauthCallback = require('./routes/oauth-token');
+
+//clientCreate
+
+const clientCreate = require('./routes/createClient')
+
+//Credentials
+
+const getToken = require('./services/Oauth2')
 
 
 
@@ -49,6 +57,15 @@ app.use('/v1/prueba', UpdateQuestionnaire)
 app.use('/v1/prueba', Home)
 app.use('/v1/prueba', redirect)
 app.use('/v1/prueba', oauthCallback)
+app.use('/v1/prueba', clientCreate)
+
+//GettingToken
+app.post('/v1/prueba/getToken', getToken.obtainToken, (req,rep)=>{
+  console.log("Realizado");
+})
+
+//GivingToken
+
 
    
 
@@ -63,6 +80,6 @@ db.sequelize.authenticate()
 
 
 
-app.listen(3019, ()=>{
+app.listen(3000, ()=>{
     console.log("Servidor arrancado");
 })

@@ -6,6 +6,7 @@ const Questionnaires = require('../models/questionnaires')(db.sequelize, DataTyp
 const Users = require('../models/users')(db.sequelize, DataTypes);
 
 app.post('/questionnaire', (req,rep)=>{
+    console.log("Hola");
     Users.findOne({
         where: {
             name: req.body.name
@@ -16,7 +17,7 @@ app.post('/questionnaire', (req,rep)=>{
             name: req.body.questionnaire_name,
             type: req.body.type,
             number_questions: req.body.number_questions,
-            user_id: usuario.id
+            user: usuario.id
         })
     })
     .then((questionnaire)=>{

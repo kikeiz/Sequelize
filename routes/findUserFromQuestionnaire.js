@@ -8,20 +8,19 @@ const Questionnaires = require('../models/questionnaires')(db.sequelize, DataTyp
 
 
 app.get('/usuario/cuestionario', (req,rep)=>{
-    let id = req.body.id
-    db.sequelize.query('SELECT Questionnaires.name AS Questionnaire, Questionnaires.type, Users.name, Users.surname, Users.age FROM Questionnaires JOIN Users ON Questionnaires.user_id = Users.id WHERE Users.id = ?', 
-    {replacements: [id], type: QueryTypes.SELECT})
+    // let id = req.body.id
+    // db.sequelize.query('SELECT Questionnaires.name AS Questionnaire, Questionnaires.type, Users.name, Users.surname, Users.age FROM Questionnaires JOIN Users ON Questionnaires.user_id = Users.id WHERE Users.id = ?', 
+    // {replacements: [id], type: QueryTypes.SELECT})
 
-    // Questionnaires.findAll({
-    //     attributes:['id', 'name', 'type'],
-    //     include: [{
-    //         model: Users,
-    //         as: 'Users',
-    //         required: true,
-    //         attributes: ['name', 'surname']
-    //     }],
-    //     group: ['id']
-    // })
+    Questionnaires.findAll({
+        attributes:['id', 'name', 'type'],
+        include: [{
+            model: Users,
+            as: 'Users',
+            required: true,
+            attributes: ['name', 'surname']
+        }]
+    })
 
 
     .then((response)=>{

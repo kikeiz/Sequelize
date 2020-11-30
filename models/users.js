@@ -1,35 +1,26 @@
 'use strict';
-// module.exports = (sequelize, DataTypes) => {
-//   class Users extends Model {
-//     static associate(models) {
-//       this.hasMany(Questionnaires, {
-//         foreignKey: 'user_id',
-//         as: 'questionnaires'
-//       })
-//     }
-//   };
-//   Users.init({
-//     name: DataTypes.STRING,
-//     surname: DataTypes.STRING,
-//     age: DataTypes.INTEGER,
-//     country: DataTypes.STRING
-//   }, {
-//     sequelize,
-//     modelName: 'Users',
-//   });
-//   return Users;
-// };
 
 module.exports = (sequelize, DataTypes)=>{
   const Users = sequelize.define(
     'Users',{
+      user_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true
+      },
+
       name: DataTypes.STRING,
   
       surname: DataTypes.STRING,
   
       age: DataTypes.INTEGER,
   
-      country: DataTypes.STRING
+      country: DataTypes.STRING, 
+
+      username: DataTypes.STRING,
+
+      password:DataTypes.STRING
     
   }, {
     freezeTableName: true
@@ -37,7 +28,7 @@ module.exports = (sequelize, DataTypes)=>{
 
   
   Users.associate = (models)=>{
-    Users.hasMany(models.Questionnaires, {as: 'Users', foreignKey: 'user_id'})
+    Users.hasMany(models.Questionnaires, {as:'Questionnaires', foreignKey:'user'})
   }
 
   return Users

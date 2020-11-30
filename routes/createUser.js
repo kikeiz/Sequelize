@@ -11,8 +11,9 @@ app.post('/usuario', (req,res)=>{
         name: req.body.name,
         surname: req.body.surname,
         age: req.body.age,
-        points: req.body.points,
-        country: req.body.country
+        country: req.body.country,
+        username: req.body.username,
+        password: req.body.password
     })
     .then(response=>{
         res.send(response);
