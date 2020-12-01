@@ -20,7 +20,7 @@ app.oauth = new OAuth2Server({
 });
 
 
-async function obtainToken(req, res) {
+async function obtainToken(req, res){
   let request = new Request(req);
   let response = new Response(res);
   const base64 = req.headers.authorization.split(' ');
@@ -31,12 +31,12 @@ async function obtainToken(req, res) {
   console.log(clientCredentials);
 
   const clientid = await client.findOne({
-    where: { clientId: clientCredentials[0]}})
-  .catch((err) => console.log(err));
+    where: { clientId: clientCredentials[0]}
+  })
+  .catch((err) => console.log(err))
   return app.oauth
     .token(request, response)
     .then(async (token) => {
-        console.log(token);
       await tokenAuth.create({
             accessToken: token.accessToken,
             accessTokenExpiresAt: token.accessTokenExpiresAt,

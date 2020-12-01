@@ -191,6 +191,5 @@ module.exports = {
  getUser: getUser,
  getUserFromClient: getUserFromClient,
  getRefreshToken: getRefreshToken,
- revokeToken: revokeToken,
- app
+ revokeToken: revokeToken
 };
