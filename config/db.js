@@ -3,14 +3,14 @@ const {Sequelize, DataTypes} = require('sequelize');
 const questionnaires = require('../models/questionnaires');
 const users = require('../models/users');
 const config = require('../config.json')['development']
-const {database} = require ('./config')
+const {development} = require ('./config')
 const Op = Sequelize.Op;
 const db = {}
 
-const sequelize = new Sequelize(database.database, database.username, database.password
+const sequelize = new Sequelize(development.database, development.username, development.password
 , {
-    host: database.host,
-    dialect: database.dialect,
+    host: development.host,
+    dialect: development.dialect,
     port: 3306,
 })
 
